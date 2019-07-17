@@ -4,15 +4,12 @@ import { Route } from 'react-router-dom'
 import { fetchPopulation } from '../actions'
 import Population from '../pages/Population'
 import Person from '../pages/Person'
-import 'antd/dist/antd.min.css'
 import '../styles/App.css'
 
 class App extends Component {
 
   componentDidMount () {
-    const {fetchPopulation} = this.props
-
-    fetchPopulation()
+    this.props.fetchPopulation()
   }
 
   render () {

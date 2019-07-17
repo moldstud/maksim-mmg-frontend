@@ -1,3 +1,5 @@
+@import "~antd/dist/antd.css";
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,4 +17,14 @@
 .imageWrapper {
   overflow: hidden;
   height: 300px;
+}
+
+.hairColor {
+  color: #ffffff;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.ant-list-pagination {
+  margin-bottom: 24px;
 }
