@@ -1,0 +1,18 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px
+}
+
+.errorMessage {
+  background: red;
+  color: #fff;
+  padding: 10px;
+  font-size: 1.2em;
+  border-radius: 4px;
+}
+
+.imageWrapper {
+  overflow: hidden;
+  height: 300px;
+}

@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Route } from 'react-router-dom'
+import { fetchPopulation } from '../actions'
+import Population from '../pages/Population'
+import Person from '../pages/Person'
+import 'antd/dist/antd.min.css'
+import '../styles/App.css'
 
-function App() {
-  return (
-    <div>App Skeleton</div>
-  );
+class App extends Component {
+
+  componentDidMount () {
+    const {fetchPopulation} = this.props
+
+    fetchPopulation()
+  }
+
+  render () {
+    return (
+      <div className={'container'}>
+        <Route path="/" component={Population} exact/>
+        <Route path="/person/:id" component={Person}/>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default connect(
+  null,
+  dispatch => ({
+    fetchPopulation: () => dispatch(fetchPopulation())
+  })
+)(App)
