@@ -16,6 +16,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [Ant Design](https://ant.design/) A design system with values of Nature and Determinacy for better user experience of enterprise applications
 - [Enzyme](https://airbnb.io/enzyme/) A testing utility for React that makes it easier to test your React Components' output
 - [Chai](https://www.chaijs.com/) Chai is a BDD / TDD assertion library
+- [Eslint](https://eslint.org/) The pluggable linting utility for JavaScript and JSX
+- [Prettier](https://prettier.io/) An opinionated code formatter
+- [Husky](https://github.com/typicode/husky) Husky can prevent bad git commit, git push and more
 
 ## Available Scripts
 
