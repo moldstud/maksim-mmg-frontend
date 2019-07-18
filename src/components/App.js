@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { fetchPopulation } from '../actions'
 import Population from '../pages/Population'
 import Person from '../pages/Person'
+import NotFound from '../pages/NotFound'
 import '../styles/App.css'
 
 class App extends Component {
@@ -15,8 +16,12 @@ class App extends Component {
   render () {
     return (
       <div className={'container'}>
-        <Route path="/" component={Population} exact/>
-        <Route path="/person/:id" component={Person}/>
+        <Switch>
+          <Route path="/" component={Population} exact/>
+          <Route path="/person/:id" component={Person}/>
+          <Route path="/not-found" component={NotFound}/>
+          <Redirect to="/not-found"/>
+        </Switch>
       </div>
     )
   }

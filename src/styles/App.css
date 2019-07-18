@@ -1,7 +1,7 @@
 @import "~antd/dist/antd.css";
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding-top: 20px
 }
@@ -25,6 +25,23 @@
   border-radius: 4px;
 }
 
-.ant-list-pagination {
-  margin-bottom: 24px;
+.personWrapper {
+  display:flex;
+  flex-flow: row wrap;
+  font-size: 1.3em;
 }
+
+.personWrapper div:nth-child(2) {
+  padding: 20px;
+}
+
+.responsiveImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.ant-list-pagination {
+margin-bottom: 24px;
+}
+

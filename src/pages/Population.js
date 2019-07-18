@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Typography, Card, List, Spin, Input } from 'antd'
+import { Typography, Card, List, Spin, Input, PageHeader } from 'antd'
 import { Link } from 'react-router-dom'
 import { setCurrentPage, setFilter, setPageSize } from '../actions'
 import { filterPopulation } from '../utils'
+import { TOWN_NAME } from '../constants/config'
 
 class Population extends Component {
 
@@ -30,11 +31,12 @@ class Population extends Component {
 
     return (
       <>
+        <PageHeader title={`Population Of ${TOWN_NAME}`}/>
         {isLoading && <Spin size="large"/>}
         {errorMessage && <div className={'errorMessage'}>{errorMessage}</div>}
         {list && <Input.Search
           placeholder="Input search text"
-          enterButton="Clear"
+          enterButton="Show All"
           size="large"
           onChange={this.onChangeFilter}
           onSearch={this.onClearFilter}
@@ -57,7 +59,7 @@ class Population extends Component {
               <Link to={`/person/${person.id}`}>
                 <Card hoverable cover={
                   <div className={'imageWrapper'}>
-                    <img alt={person.name} src={person.thumbnail}/>
+                    <img alt={person.name} src={person.thumbnail} className={'responsiveImage'}/>
                   </div>
                 }>
                   <Card.Meta title={person.name} description={(

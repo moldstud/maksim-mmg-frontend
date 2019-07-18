@@ -4,7 +4,9 @@ import {
   FETCH_POPULATION,
   FETCH_POPULATION_SUCCESS,
   SET_CURRENT_PAGE,
-  SET_PAGE_SIZE, SET_FILTER
+  SET_PAGE_SIZE,
+  SET_FILTER,
+  FETCH_PERSON
 } from '../constants/actionTypes'
 
 export const fetchPopulation = () => async dispatch => {
@@ -35,4 +37,10 @@ export const setPageSize = (pageSize) => {
 
 export const setFilter = (filter) => {
   return {type: SET_FILTER, filter}
+}
+
+export const fetchPerson = (id, list) => {
+  const data = list.find(item => item.id.toString() === id.toString())
+
+  return {type: FETCH_PERSON, data}
 }
