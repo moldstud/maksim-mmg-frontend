@@ -19,11 +19,13 @@ export const fetchPopulation = () => async dispatch => {
       const json = await response.json()
       const list = json[TOWN_NAME]
 
-      dispatch({type: FETCH_POPULATION_SUCCESS, list})
+      return dispatch({type: FETCH_POPULATION_SUCCESS, list})
     }
 
+    return dispatch({type: FETCH_POPULATION_FAILURE, errorMessage: response.statusText})
+
   } catch (error) {
-    dispatch({type: FETCH_POPULATION_FAILURE, errorMessage: error.message})
+    return dispatch({type: FETCH_POPULATION_FAILURE, errorMessage: error.message})
   }
 }
 

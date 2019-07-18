@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Typography, Card, List, Spin, Input, PageHeader } from 'antd'
-import { Link } from 'react-router-dom'
 import { setCurrentPage, setFilter, setPageSize } from '../actions'
 import { filterPopulation } from '../utils'
 import { TOWN_NAME } from '../constants/config'
+import PropTypes from 'prop-types'
 
-class Population extends Component {
+export class Population extends Component {
 
   onChangeCurrentPage = (page) => {
     this.props.setCurrentPage(page)
@@ -22,6 +22,10 @@ class Population extends Component {
 
   onClearFilter = () => {
     this.props.setFilter(null)
+  }
+
+  onOpenPerson = (id) => {
+    this.props.history.push(`/person/${id}`)
   }
 
   render () {
@@ -56,25 +60,30 @@ class Population extends Component {
           }}
           renderItem={person => (
             <List.Item>
-              <Link to={`/person/${person.id}`}>
-                <Card hoverable cover={
-                  <div className={'imageWrapper'}>
-                    <img alt={person.name} src={person.thumbnail} className={'responsiveImage'}/>
+              <Card hoverable onClick={() => this.onOpenPerson(person.id)} cover={
+                <div className={'imageWrapper'}>
+                  <img alt={person.name} src={person.thumbnail} className={'responsiveImage'}/>
+                </div>
+              }>
+                <Card.Meta title={person.name} description={(
+                  <div style={{background: `${person.hair_color.toLowerCase()}`}} className={'hairColor'}>
+                    Hair Color
                   </div>
-                }>
-                  <Card.Meta title={person.name} description={(
-                    <div style={{background: `${person.hair_color.toLowerCase()}`}} className={'hairColor'}>
-                      Hair Color
-                    </div>
-                  )}/>
-                </Card>
-              </Link>
+                )}/>
+              </Card>
             </List.Item>
           )}
         />}
       </>
     )
   }
+}
+
+Population.propTypes = {
+  population: PropTypes.object.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  setPageSize: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired,
 }
 
 export default connect(

@@ -6,8 +6,9 @@ import Population from '../pages/Population'
 import Person from '../pages/Person'
 import NotFound from '../pages/NotFound'
 import '../styles/App.css'
+import PropTypes from 'prop-types'
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount () {
     this.props.fetchPopulation()
@@ -25,6 +26,10 @@ class App extends Component {
       </div>
     )
   }
+}
+
+App.propTypes = {
+  fetchPopulation: PropTypes.func.isRequired,
 }
 
 export default connect(

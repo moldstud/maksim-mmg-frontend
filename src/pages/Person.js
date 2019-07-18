@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Spin, PageHeader, Descriptions} from 'antd'
+import { Spin, PageHeader, Descriptions } from 'antd'
 import { fetchPerson } from '../actions'
 import NotFound from '../pages/NotFound'
+import PropTypes from 'prop-types'
 
-class Person extends Component {
+export class Person extends Component {
 
   state = {
     personId: null
@@ -67,6 +68,12 @@ class Person extends Component {
       </>
     )
   }
+}
+
+Person.propTypes = {
+  person: PropTypes.object.isRequired,
+  population: PropTypes.object.isRequired,
+  fetchPerson: PropTypes.func.isRequired
 }
 
 export default connect(
